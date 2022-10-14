@@ -1,0 +1,1309 @@
+/* This contains CSS notes. */
+/* For reference, you can also see https://devdocs.io/css/ */
+/* SELECTORS (sample):
+    id: #sample {}
+    class: .sample {}
+    elements: p {} or h1 {}
+    universal: * {}
+    grouping: p, h1, h2 {}
+*/
+
+
+
+/*
+CSS SELECTORS
+
+----------------------------------------------
+(UNIVERSAL)
+
+* {
+  color: purple;
+}
+
+
+----------------------------------------------
+(ELEMENT)
+
+div {
+  color: white;
+}
+
+----------------------------------------------
+
+(CLASS)
+
+
+.alert-text {
+  color: red;
+}
+
+
+----------------------------------------------
+(ID)
+
+#title {
+  background-color: red;
+}
+
+----------------------------------------------
+(GROUPING)
+for two groups of elements that share some of their style declarations
+
+.read,
+.unread {
+  color: white;
+  background-color: black;
+}
+
+.read {
+  /* several unique declarations */
+}
+
+.unread {
+  /* several unique declarations */
+} 
+
+/*
+----------------------------------------------
+(CHAINING)
+selects any element that has BOTH the classes mentioned
+
+.subsection.header {
+  color: red;
+}
+
+.subsection#preview {
+  color: blue;
+}
+
+
+<div>
+  <div class="subsection header">Latest Posts</div>
+  <p class="subsection" id="preview">This is where a preview for a post might go.</p>
+</div>
+
+----------------------------------------------
+(Descendant Combinator)
+
+.ancestor .contents {
+  (plus some declarations)
+}
+
+
+<div class="ancestor"> <!-- A -->
+  <div class="contents"> <!-- B -->
+    <div class="contents"> <!-- C -->
+    </div>
+  </div>
+</div>
+
+----------------------------------------------
+
+
+/* PRECEDENCE / SPECIFICITY
+(see https://wattenberger.com/blog/css-cascade for elaboration)
+(also https://www.w3schools.com/css/css_specificity.asp)
+
+ID selectors > Class selectors > Type selectors
+
+*/
+
+/* To override specifity, add !important declaration */
+/* example:
+
+  p {
+  color: orchid !important;
+}
+
+(this will now override every other conflicting declarations and will take top-most specificity)
+*/
+
+
+----------------------------------------------
+
+/* INSERTING CSS:
+    External: (insert code in HTML head)
+            <link rel="stylesheet" href="sample.css">
+    Internal: (insert code in HTML head)
+            <style>
+            (element/id/class) {}
+            </style>
+    Inline: (insert code inside HTML tags)
+      (samples)
+            <h1 style="color:blue;text-align:center;">This is a heading</h1>
+            <p style="color:red;">This is a paragraph.</p>
+
+    Note: If there are multiple style sheets, the value from the last read
+                    style sheet will be used.
+    Also note: Prioritization of styles -
+            (1) Inline style (inside an HTML element),
+            (2) External and internal style sheets (in the head section), and
+            (3) Browser default
+*/
+
+
+
+/* COLORS:
+    list and sample of CSS colors (in color names and HEX):
+        https://www.w3schools.com/colors/colors_names.asp
+        https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color_keywords
+    For color picker:
+        https://www.w3schools.com/colors/colors_picker.asp
+    Also, for a good reference of color palettes (like, for background colors):
+        https://colorhunt.co/
+
+    Syntax (samples):
+          background-color:DodgerBlue;       - for background colors
+          color:DodgerBlue;                  - for text colors
+          border:2px solid DodgerBlue;       - for border colors
+
+    RGB (red, green, blue):
+        (samples):
+          rgb(90, 90, 90)          - gray, equal values
+          rgb(255, 0, 0)           - red
+          rgb(0, 0, 255)           - blue
+          rgb(0, 255, 0)           - green
+
+    HEX (#rrggbb):
+        (samples):
+          #ff0000, #3cb371, #0000ff, #ee82ee, #3c3c3c
+
+    3 Digit HEX Value (#rgb):
+        (samples):
+          #fc9         - same as #ffcc99
+          #f0f         - same as #ff00ff
+
+    HSL (hue, saturation, lightness):
+        (samples):
+          hsl(0, 100%, 50%), hsl(240, 100%, 50%), hsl(147, 50%, 47%)
+          hsl(300, 76%, 72%), hsl(248, 53%, 58%), hsl(0, 0%, 50%)
+          hsl(0, 100%, 0%), hsl(0, 100%, 100%)
+
+    HSLA (hue, saturation, lightness, alpha) (alpha = transparency/opacity):
+          hsla(0, 100%, 50%, 0.8), hsla(9, 100%, 64%, 0), hsla(9, 100%, 64%, 0.8)
+*/
+
+
+/* BACKGROUND COLOR (samples):
+    background-color: green;           - color only
+
+    background-color: green;           - color with opacity
+    opacity: 0.3;
+
+    background: rgba(0, 128, 0, 0.3)   - RGB color with opacity/alpha
+*/
+
+
+
+/* BACKGROUND IMAGE (samples):
+    background-image: url("image.jpg");       - source image file
+    background-repeat: repeat-x;              - repeat horizontally
+    background-repeat: repeat-y;              - repeat vertically
+    background-repeat: no-repeat;             - no repeat
+    background-position: right top;           - image position
+      (NOTE: positions are center, left top, left center, left bottom,
+            right top, right center, right bottom, center top, center bottom)
+
+    background-attachment: fixed;             - background will be fixed
+    background-attachment: scroll;             - background will be scroll
+
+    (NOTE: You can also shorten the code.
+      Order of values are COLOR, IMAGE, REPEAT, ATTACHMENT and POSITION.
+      Some values may be missing as long as others are in right order.)
+      (sample):
+          background: #ffffff url("image.jpg") no-repeat right top;
+  */
+  
+  
+  
+  
+/* BORDERS:
+      BORDER STYLES: (border-style: dotted;)
+          dotted, dashed, solid, double, groove, ridge, inset, outset,
+            none & hidden
+
+      BORDER WIDTH:
+          (can be px, pt, cm, em, in)
+              border-width: 5px;     - specific pixel width
+
+          (can also have from one to four values, for the top border,
+                    right border,bottom border, and the left border):
+              border-width: 5px 20px;    (5px top and bottom, 20px on the sides)
+              border-width: 5px 20px 10px; (5px top, 20px on the sides
+                                    and 10px bottom)
+              border-width: 25px 10px 4px 35px; (25px top, 10px right,
+                                    4px bottom and 35px left)
+          (can be pre-defined):
+              border-width: medium;   (can be thin, medium, or thick)
+
+      BORDER COLOR:
+        border-color: red;                   - all borders specific color
+        border-color: red green blue yellow; - multicolor border, four sides
+        border-color: red blue yellow; - red top, blue sides, yellow bottom (clockwise)
+        border-color: red yellow;            - red top & bottom, yellow sides
+        border-color: #ff0000;               - HEX values
+        border-color: rgb(255, 0, 0);        - RGB values
+        border-color: hsl(0, 100%, 50%);     - HSL values
+
+
+      BORDER SIDES:(dotted, dashed, solid, double, groove, ridge, inset, outset,
+                              none & hidden)
+        (samples):
+        border-top-style: dotted;
+        border-right-style: solid;
+        border-bottom-style: dotted;
+        border-left-style: solid;
+
+        (also samples):
+        border-style: dotted solid double dashed;
+             - dotted top, solid right, double bottom & dashed left (clockwise)
+        border-style: dotted solid double;
+             - dotted top, solid sides & double bottom
+        border-style: dotted solid;
+             - dotted top & bottom, solid sides
+
+      SHORTHAND: (width, style, color) (style is required)
+        (sample):
+            border: 5px solid red;       - 5px width, solid style, red color
+        (can also set only one side):
+            border-left: 5px solid red;  - left side only
+
+      ROUNDED BORDERS: (add to shorthand code)
+        (sample):
+            border-radius: 5px;       - the higher the px, the rounder to border
+*/
+
+
+
+
+/* MARGINS:
+      (samples):
+        margin-top: 100px;
+        margin-bottom: 100px;
+        margin-right: 150px;
+        margin-left: 80px;
+
+    SHORTHAND:(clockwise of four values)
+      (samples):
+        margin: 25px 50px 75px 100px;   - top margin is 25px, right margin is 50px,
+                                       bottom margin is 75px & left margin is 100px
+        margin: 25px 50px 75px;         - top margin is 25px, sides are 50px,
+                                          bottom margin is 75px
+        margin: 25px 50px;              - top and bottom margins are 25px,
+                                          sides are 50px
+        margin: 25px;                   - all four margins are 25px
+
+      (can also be set to auto)
+        (sample):(Margin will horizontally center the element within its container.)
+              div {
+                  width: 300px;
+                  margin: auto;
+                  border: 1px solid red;
+                  }
+*/
+
+
+
+
+/* PADDING:
+    (sample):
+        div {
+            padding-top: 50px;
+            padding-right: 30px;
+            padding-bottom: 50px;
+            padding-left: 80px;
+            }
+
+      SHORTHAND: (sample)
+        div {
+            padding: 25px 50px 75px 100px;
+            }
+        (if four values: clockwise)
+        (if three: top, sides, bottom)
+        (if two: top & bottom, sides)
+
+        Notes:
+          If padding element is placed along with width element, the amount of
+            padding will be added to the amount of width.
+              Example:
+                div {
+                  width: 300px;
+                  padding: 25px;
+                    }
+          The actual width will now be 350px.
+          To keep the width at 350px, you must add box-sizing property/
+              Example:
+                div {
+                  width: 300px;
+                  padding: 25px;
+                  box-sizing: border-box;
+                    }
+*/
+
+
+
+
+/* HEIGHT, WIDTH and MAX-WIDTH:
+    (samples):
+
+          (height of 200 pixels and a width of 50%)
+          div {
+              height: 200px;
+              width: 50%;
+              background-color: powderblue;
+              }
+
+          (height of 100 pixels and a width of 500 pixels)
+          div {
+              height: 100px;
+              width: 500px;
+              background-color: powderblue;
+              }
+              
+           (By default, an <img> element’s height and width values will be the same as the 		actual image file’s height and width. If you wanted to adjust the size of the image without causing it to lose its proportions, you would use a value of “auto” for the height property and adjust the width value:)
+           img {
+  		height: auto;
+  		width: 500px;
+		}	
+           
+           
+
+      MAX-WIDTH: (can be specified in px, cm, or in percent)
+        (used when the browser window is smaller than the width of the element)
+            (sample):
+              div {
+                  max-width: 500px;
+                  height: 100px;
+                  background-color: powderblue;
+                  }
+*/
+
+
+
+/* BOX MODEL:
+    Explanation of the different parts:
+      CONTENT - The content of the box, where text and images appear
+      PADDING - Clears an area around the content. The padding is transparent
+      BORDER - A border that goes around the padding and content
+      MARGIN - Clears an area outside the border. The margin is transparent
+    (see https://drive.google.com/file/d/1kG_aaEVDHiE2b3N517o_37ZtihaWKcw4/view?usp=sharing)
+      (sample):
+        div {
+            width: 300px;
+            border: 15px solid green;
+            padding: 50px;
+            margin: 20px;
+            }
+      Note:
+      When you set the width and height properties of an element with CSS,
+      you just set the width and height of the content area.
+      To calculate the full size of an element, you must also add padding,
+      borders and margins.
+      Calculation:
+        Total element width = width + left padding + right padding
+              + left border + right border + left margin + right margin
+        Total element height = height + top padding + bottom padding
+              + top border + bottom border + top margin + bottom margin
+        (sample):
+          div {
+            width: 320px;
+            padding: 10px;
+            border: 5px solid gray;
+            margin: 0;
+            }
+          This <div> element will have a total width of 350px:
+          320px (width) + 20px (left + right padding) + 10px (left + right border)
+          + 0px (left + right margin) = 350px
+*/
+
+
+
+
+/* OUTLINE: (refers to the line drawn outside the element's border)
+    (see https://drive.google.com/file/d/1LU9SWBxApCvncrHC1qmSUXJBxhf2xhhY/view?usp=sharing)
+
+        (samples):
+
+          (style)
+          outline-style: dotted;
+              (can also be dashed, solid, double, groove, ridge, inset, outset,
+                                  none & hidden)
+
+          (width)
+          outline-width: thin;       (thin = 1px, medium = 3px, thick = 5px)
+          outline-width: 4px;        (specific size in px, pt, cm)
+
+          (color)
+          outline-color: red;                  (specific color)
+          outline-color: #ff0000;              (HEX values)
+          outline-color: rgb(255, 0, 0);       (RGB values)
+          outline-color: hsl(0, 100%, 50%);    (HSL values)
+
+          (shorthand)
+              [order does not matter: width, style (required), color]
+              (one, two, or three values)
+              (samples:)
+                  outline: dashed;
+                  outline: dotted red;
+                  outline: 5px solid yellow;
+                  outline: thick ridge pink;
+
+          (outline offset)
+              (adds space between an outline and the edge/border)
+              (sample):
+                  p {
+                    margin: 30px;
+                    background: yellow;
+                    border: 1px solid black;
+                    outline: 1px solid red;
+                    outline-offset: 15px;
+                    }
+*/
+
+
+
+
+/* TEXT FORMATTING:
+
+      TEXT COLOR: (sample)
+          color: blue; - can be specific color, HEX or RGB
+
+      TEXT ALIGNMENT:
+          text-align: center;
+          text-align: left;
+          text-align: right;
+          text-align: justify;
+
+      TEXT ALIGN LAST: (alignment of last line)
+          text-align-last: right;
+          text-align-last: center;
+          text-align-last: justify;
+
+
+      TEXT DIRECTION:
+
+          (right-to-left text direction)
+                p {
+                    direction: rtl;
+                    unicode-bidi: bidi-override;
+                  }
+
+          (vertical alignments)
+                vertical-align: baseline;
+                vertical-align: text-top;
+                vertical-align: text-bottom;
+                vertical-align: sub;
+                vertical-align: super;
+
+
+        TEXT DECORATION:
+
+          (decoration line)
+                text-decoration-line: overline;
+                text-decoration-line: line-through;
+                text-decoration-line: underline;
+                text-decoration-line: overline underline;
+
+            (decoration line color)
+                text-decoration-color: green;
+
+            (decoration line style)
+                text-decoration-style: solid;
+                text-decoration-style: double;
+                text-decoration-style: dotted;
+                text-decoration-style: dashed;
+                text-decoration-style: wavy;
+
+            (decoration line thickness)
+                text-decoration-thickness: auto;     - default thickness
+                text-decoration-thickness: 5px;      - set in px
+                text-decoration-thickness: 25%;      - set in percentage
+
+            (shorthand)
+                (line, color, style, thickness)
+                (line is required)
+                      text-decoration: underline red double 5px;
+
+            NOTE: All links in HTML are underlined by default.
+                Sometimes you see that links are styled with no underline.
+                The {text-decoration: none;} is used to remove the underline
+                    from links, like this:
+                        a {
+                            text-decoration: none;
+                          }
+
+            TEXT TRANSFORMATION:
+                (used to specify uppercase and lowercase letters in a text)
+
+                text-transform: uppercase;
+                text-transform: lowercase;
+                text-transform: capitalize;
+
+            TEXT SPACING:
+                text-indent: 50px;      - indentation of the first line
+                letter-spacing: 5px;    - space between the characters
+                line-height: 1.8;       - space between lines
+                word-spacing: 10px;     - space between the words
+                white-space: nowrap;    - to remove text wrapping
+
+            TEXT SHADOW: (samples)
+                text-shadow: 2px 2px;          - horizontal shadow (2px) and the
+                                                  vertical shadow (2px)
+                text-shadow: 2px 2px red;      - add a color (red) to the shadow
+                text-shadow: 2px 2px 5px red;  - add a blur (5px) to the shadow
+                text-shadow: 0 0 3px #ff0000, 0 0 5px #0000ff;
+                                    - text-shadow with red and blue neon glow
+                h1 {
+                  color: white;
+                  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+                  }    - text-shadow with blue neon glow on white text
+*/
+
+
+
+
+/* FONTS:
+      see https://www.digitalocean.com/community/tutorials/how-to-load-and-use-custom-fonts-with-css#finding-and-loading-a-font-file-from-a-hosted-service
+    - 5 generic font families: Serif, Sans-serif, Monospace, Cursive, Fantasy
+    - Web safe fonts: universally installed across all browsers and devices
+    - font-family property should hold several font names as a "fallback"
+    - start with the font you want, and end with a generic family
+    - font names should be separated with comma
+
+    WEB SAFE FONTS:
+      Arial, Verdana, Helvetica, Tahoma, Trebuchet MS, Times New Roman,
+        Georgia, Garamond, Courier New, Brush Script MT
+
+    FONT FALLBACKS:
+      Serif, Sans-serif, Monospace, Cursive, Fantasy
+
+        (samples): - second and third fonts are backups
+            font-family: "Times New Roman", Times, serif;
+            font-family: Arial, Helvetica, sans-serif;
+            font-family: "Lucida Console", "Courier New", monospace;
+
+
+      FONT STYLE: normal, italic, oblique
+        (sample): font-style: normal;
+
+
+      FONT WEIGHT: normal, bold
+        (sample): font-weight: bold;
+
+      FONT SIZE: (samples)
+          font-size: 14px;
+          font-size: 2.5em;    (default text in browsers is 1em or 16px)
+
+          (set a default font-size in percent for the <body> element)
+          (this shows the same text size in all browsers)
+          (also allows all browsers to zoom or resize the text)
+                (sample):
+                  body {
+                        font-size: 100%;
+                        }
+
+      RESPONSIVE FONT SIZE: (text size will follow the size of the browser window)
+          vw = viewport width
+        (sample):
+            <h1 style="font-size:10vw">Hello World</h1>
+
+      GOOGLE FONTS:
+        (for list of fonts: see https://fonts.google.com/)
+
+          - Add a stylesheet link to request the desired web font(s):
+          <link rel="stylesheet"
+                  href="https://fonts.googleapis.com/css?family=Font+Name">
+            Note: Replace any spaces in the font family name with plus signs (+).
+
+          - Style an element with the requested web font, either in a stylesheet:
+                  .css-selector {
+                          font-family: 'Font Name', serif;
+                                  }
+            or with an inline style on the element itself:
+                <div style="font-family: 'Font Name', serif;">
+                        Your text
+                </div>
+
+          - To request multiple font families, separate the names with a pipe character (|).
+            (sample):
+            https://fonts.googleapis.com/css?family=Tangerine|Inconsolata|Droid+Sans
+
+          - To request other styles or weights, append a colon (:) to the name of the font,
+              followed by a list of styles or weights separated by commas (,).
+            (sample):
+            https://fonts.googleapis.com/css?family=Tangerine:bold,bolditalic|Inconsolata:italic|Droid+Sans
+
+            You can also use abbreviation (i for italic and b for bold).
+            (sample):
+            https://fonts.googleapis.com/css?family=Cantarell:i|Droid+Serif:b
+
+        (sample):
+        <head>
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+          <style>
+              body {
+                    font-family: "Sofia", sans-serif;
+                    }
+          </style>
+        </head>
+
+        POPULAR FONT PAIRINGS:
+          (samples):
+            - "Georgia" font for headings, and "Verdana" for text
+            - "Helvetica" font for headings, and "Garamond" for text
+            - "Merriweather" font for headings, and "Open Sans" for text
+            - "Ubuntu" font for headings, and "Lora" for text
+            - "Abril Fatface" font for headings, and "Poppins" for text
+            - "Cinzel" font for headings, and "Fauna One" for text
+            - "Fjalla One" font for headings, and "Libre Baskerville" for text
+            - "Space Mono" font for headings, and "Muli" for text
+            - "Spectral" font for headings, and "Rubik" for text
+            - "Oswald" font for headings, and "Noto Sans" for text
+
+          SHORTHAND:
+            font: font-style, font-variant, font-weight, font-size/line-height (required),
+                  font-family (required)
+            (samples):
+            font: 20px Arial, sans-serif;
+            font: italic small-caps bold 12px/30px Georgia, serif;
+*/
+
+
+
+
+/* ICONS:
+      FONTAWESOME:
+        - put this code on html head:
+        <script src="https://kit.fontawesome.com/592a87031d.js" crossorigin="anonymous"></script>
+        - find icon of choice at https://fontawesome.com/icons
+        - paste icon code in html body: (sample)
+          <body>
+            <i class="fa-brands fa-google"></i>
+          </body>
+        - to resize, see https://fontawesome.com/docs/web/style/size
+        - to animate, see https://fontawesome.com/docs/web/style/animate
+        - to use icons as replacement in default list icons, see https://fontawesome.com/docs/web/style/lists
+        - to stack icons, see https://fontawesome.com/docs/web/style/stack
+
+
+      GOOGLE ICONS:
+        - find icon of choice at https://fonts.google.com/icons
+        - copy & paste variable code to HTML head
+          (for example):
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        - copy & paste icon code to HTML
+          (for example):
+          <span class="material-symbols-outlined">star</span>
+        - resize by adding font-size CSS to inline style
+          (for example):
+          <span class="material-symbols-outlined" style="font-size: 48px">star</span>
+          (Note: default size is 24px; can downsize to 18px, or upsize to 36px and 48px)
+        - see https://developers.google.com/fonts/docs/material_icons for more styling instructions
+*/
+
+
+
+
+/* LINKS:
+    - can be styled with any CSS property (like color, font-family, background, etc.)
+      (sample):
+          a {
+            color: hotpink;
+            }
+
+    - can be styled differently depending on state:
+        a:link - a normal, unvisited link
+        a:visited - a link the user has visited
+        a:hover - a link when the user mouses over it
+        a:active - a link the moment it is clicked
+        (samples):
+              a:link {
+                      color: red;
+                    }
+              a:visited {
+                    color: green;
+                    }
+              a:hover {
+                    color: hotpink;
+                    }
+              a:active {
+                    color: blue;
+                    }
+
+      - When setting the style for several link states,
+            a:hover MUST come after a:link and a:visited &
+            a:active MUST come after a:hover
+
+      - text-decoration is mostly used to remove underlines from links
+            (samples):
+            a:link {
+                    text-decoration: none;
+                    }
+
+            a:visited {
+                    text-decoration: none;
+                    }
+
+            a:hover {
+                    text-decoration: underline;
+                    }
+
+            a:active {
+                    text-decoration: underline;
+                    }
+
+       - background-color can be used to specify a background color for links
+             (samples):
+             a:link {
+                    background-color: yellow;
+                    }
+
+             a:visited {
+                    background-color: cyan;
+                    }
+
+             a:hover {
+                    background-color: lightgreen;
+                    }
+
+             a:active {
+                    background-color: hotpink;
+                    }
+
+        - more advanced examples to display links as boxes/buttons:
+          (sample 1):
+          <head>
+            <style>
+            a:link, a:visited {
+              background-color: #f44336;
+              color: white;
+              padding: 14px 25px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              }
+            a:hover, a:active {
+              background-color: red;
+              }
+              </style>
+            </head>
+            <body>
+              <a href="default.asp" target="_blank">This is a link</a>
+            </body>
+
+            (sample 2):
+            <head>
+              <style>
+              a:link, a:visited {
+                background-color: white;
+                color: black;
+                border: 2px solid green;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+              }
+              a:hover, a:active {
+                background-color: green;
+                color: white;
+              }
+              </style>
+            </head>
+            <body>
+              <a href="default.asp" target="_blank">This is a link</a>
+            </body>
+
+          - check the following sample for detailed example of links:
+          (sample):
+          <head>
+            <style>
+            a.one:link {color:#ff0000;}
+            a.one:visited {color:#0000ff;}
+            a.one:hover {color:#ffcc00;}
+
+            a.two:link {color:#ff0000;}
+            a.two:visited {color:#0000ff;}
+            a.two:hover {font-size:150%;}
+
+            a.three:link {color:#ff0000;}
+            a.three:visited {color:#0000ff;}
+            a.three:hover {background:#66ff66;}
+
+            a.four:link {color:#ff0000;}
+            a.four:visited {color:#0000ff;}
+            a.four:hover {font-family:monospace;}
+
+            a.five:link {color:#ff0000;text-decoration:none;}
+            a.five:visited {color:#0000ff;text-decoration:none;}
+            a.five:hover {text-decoration:underline;}
+            </style>
+          </head>
+          <body>
+            <h2>Styling Links</h2>
+            <p>Mouse over the links and watch them change layout:</p>
+            <p><b><a class="one" href="default.asp" target="_blank">This link changes color</a></b></p>
+            <p><b><a class="two" href="default.asp" target="_blank">This link changes font-size</a></b></p>
+            <p><b><a class="three" href="default.asp" target="_blank">This link changes background-color</a></b></p>
+            <p><b><a class="four" href="default.asp" target="_blank">This link changes font-family</a></b></p>
+            <p><b><a class="five" href="default.asp" target="_blank">This link changes text-decoration</a></b></p>
+          </body>
+/*
+
+
+
+
+/* CURSORS:
+    (see sample code for different types of cursors, which may be useful for links)
+    <body>
+        <p>Mouse over the words to change the cursor.</p>
+        <span style="cursor:auto">auto</span><br>
+        <span style="cursor:crosshair">crosshair</span><br>
+        <span style="cursor:default">default</span><br>
+        <span style="cursor:e-resize">e-resize</span><br>
+        <span style="cursor:help">help</span><br>
+        <span style="cursor:move">move</span><br>
+        <span style="cursor:n-resize">n-resize</span><br>
+        <span style="cursor:ne-resize">ne-resize</span><br>
+        <span style="cursor:nw-resize">nw-resize</span><br>
+        <span style="cursor:pointer">pointer</span><br>
+        <span style="cursor:progress">progress</span><br>
+        <span style="cursor:s-resize">s-resize</span><br>
+        <span style="cursor:se-resize">se-resize</span><br>
+        <span style="cursor:sw-resize">sw-resize</span><br>
+        <span style="cursor:text">text</span><br>
+        <span style="cursor:w-resize">w-resize</span><br>
+        <span style="cursor:wait">wait</span><br>
+    </body>
+  */
+  
+  
+  
+  
+  
+  
+/* LISTS:
+
+      - you can change the default item markers of UNORDERED lists
+        (samples):
+        list-style-type: circle;
+        list-style-type: square;
+
+      - you can change the default item markers of ORDERED lists
+        (samples):
+        list-style-type: upper-roman;
+        list-style-type: lower-alpha;
+
+      - you can use image as item marker of UNORDERED lists
+        (sample):
+        list-style-image: url('sqpurple.gif');
+
+      - you can specify the position of the item markers
+        (sample):
+        list-style-position: outside;
+        list-style-position: inside;
+
+      - to remove bullets, margin and padding from list:
+        (sample):
+          ul.demo {
+                  list-style-type: none;
+                  margin: 0;
+                  padding: 0;
+                  }
+
+      - you can also style with colors
+        (sample):
+        <head>
+          <style>
+              ol {
+                background: #ff9999;
+                padding: 20px;
+              }
+              ul {
+                background: #3399ff;
+                padding: 20px;
+              }
+              ol li {
+                background: #ffe5e5;
+                color: darkred;
+                padding: 5px;
+                margin-left: 35px;
+              }
+              ul li {
+                background: #cce5ff;
+                color: darkblue;
+                margin: 5px;
+              }
+          </style>
+        </head>
+        <body>
+          <ol>
+            <li>Coffee</li>
+            <li>Tea</li>
+            <li>Coca Cola</li>
+          </ol>
+          <ul>
+            <li>Coffee</li>
+            <li>Tea</li>
+            <li>Coca Cola</li>
+          </ul>
+        </body>
+
+      - for complete list of marker types,
+          see https://www.w3schools.com/Css/tryit.asp?filename=trycss_list-style-type_all
+
+      MORE EXAMPLES:
+
+        - list with a blue left border
+        <head>
+          <style>
+            ul {
+                border-left: 5px solid blue;
+                background-color: #f1f1f1;
+                list-style-type: none;
+                padding: 10px 20px;
+                }
+          </style>
+        </head>
+        <body>
+            <ul>
+              <li>Coffee</li>
+              <li>Tea</li>
+              <li>Coca Cola</li>
+            </ul>
+        </body>
+
+        - full-width bordered list
+        <head>
+          <style>
+            ul {
+                list-style-type: none;
+                padding: 0;
+                border: 1px solid #ddd;
+                }
+            ul li {
+                padding: 8px 16px;
+                border-bottom: 1px solid #ddd;
+                }
+            ul li:last-child {
+                border-bottom: none
+                }
+          </style>
+        </head>
+        <body>
+          <ul>
+            <li>Coffee</li>
+            <li>Tea</li>
+            <li>Coca Cola</li>
+          </ul>
+        </body>
+*/
+
+
+
+
+/* TABLES:
+        (sample):
+        <head>
+          <style>
+            #customers {
+                        font-family: Arial, Helvetica, sans-serif;
+                        border-collapse: collapse;
+                        width: 100%;
+                        }
+
+            #customers td, #customers th {
+                        border: 1px solid #ddd;
+                        padding: 8px;
+                        }
+
+            #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+            #customers tr:hover {background-color: #ddd;}
+
+            #customers th {
+                      padding-top: 12px;
+                      padding-bottom: 12px;
+                      text-align: left;
+                      background-color: #04AA6D;
+                      color: white;
+                        }
+            </style>
+          </head>
+          <body>
+            <table id="customers">
+              <tr>
+                <th>Company</th>
+                <th>Contact</th>
+                <th>Country</th>
+              </tr>
+              <tr>
+                <td>Alfreds Futterkiste</td>
+                <td>Maria Anders</td>
+                <td>Germany</td>
+              </tr>
+              <tr>
+                <td>Berglunds snabbköp</td>
+                <td>Christina Berglund</td>
+                <td>Sweden</td>
+              </tr>
+              <tr>
+                <td>Centro comercial Moctezuma</td>
+                <td>Francisco Chang</td>
+                <td>Mexico</td>
+              </tr>
+              <tr>
+                <td>Ernst Handel</td>
+                <td>Roland Mendel</td>
+                <td>Austria</td>
+              </tr>
+              <tr>
+                <td>Island Trading</td>
+                <td>Helen Bennett</td>
+                <td>UK</td>
+              </tr>
+              <tr>
+                <td>Königlich Essen</td>
+                <td>Philip Cramer</td>
+                <td>Germany</td>
+              </tr>
+              <tr>
+                <td>Laughing Bacchus Winecellars</td>
+                <td>Yoshi Tannamuri</td>
+                <td>Canada</td>
+              </tr>
+            </table>
+          </body>
+
+        - Table Borders: (sample):
+              table, th, td {
+                            border: 1px solid;
+                            }
+
+        - Full-Width Table:
+          (If you need a table that should span the entire screen (full-width),
+                add width: 100% to the <table> element:)
+                    (sample):
+                      table {
+                          width: 100%;
+                        }
+
+        - Collapse Table Borders:
+          (If the table borders must be collapsed into a single border:)
+                  table {
+                          border-collapse: collapse;
+                          }
+
+          (If you only want a border around the table,
+              only specify the border property for <table>,
+              none for th, tr and td)
+                  table {
+                        border: 1px solid;
+                        }
+
+        - Width and Height: (sample)
+              table {
+                    width: 100%;
+                    }
+
+              th {
+                  height: 70px;
+                  }
+
+        - Horizontal Alignment:
+            By default, the content of <th> elements are center-aligned
+            and the content of <td> elements are left-aligned.
+            To center-align the content of  <td> elements:
+                td {
+                    text-align: center;
+                    }
+            Properties of text-align are left, center or right.
+
+        - Vertical Alignment:
+            Properties of vertical-align are top, bottom, or middle.
+            (sample):
+              td {
+                  height: 50px;
+                  vertical-align: bottom;
+                }
+
+        - Table Padding: (sample)
+              th, td {
+                      padding: 15px;
+                      text-align: left;
+                      }
+
+        - Hoverable Table: highlight table rows on mouse over
+          (sample):
+              tr:hover {background-color: coral;}
+
+        - Striped Tables: (sample)
+              tr:nth-child(even) {background-color: #f2f2f2;}
+
+        - Table Color: (sample)
+              th {
+                  background-color: #04AA6D;
+                  color: white;
+                  }
+
+        - Responsive Table:
+            - table will display a horizontal scroll bar if the screen
+                is too small to display the full content
+            - to create a responsive table, add a container element (like div)
+                with overflow-x:auto around the table element
+
+              <div style="overflow-x:auto;">
+                  <table>
+                  ... table content ...
+                  </table>
+
+              </div>
+
+
+          MORE EXAMPLE:
+
+          (sample)
+          <head>
+            <style>
+              #customers {
+                font-family: Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+              }
+
+              #customers td, #customers th {
+                border: 1px solid #ddd;
+                padding: 8px;
+              }
+
+              #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+              #customers tr:hover {background-color: #ddd;}
+
+              #customers th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #04AA6D;
+                color: white;
+              }
+            </style>
+            </head>
+            <body>
+              <h1>A Fancy Table</h1>
+              <table id="customers">
+                <tr>
+                  <th>Company</th>
+                  <th>Contact</th>
+                  <th>Country</th>
+                </tr>
+                <tr>
+                  <td>Alfreds Futterkiste</td>
+                  <td>Maria Anders</td>
+                  <td>Germany</td>
+                </tr>
+                <tr>
+                  <td>Berglunds snabbköp</td>
+                  <td>Christina Berglund</td>
+                  <td>Sweden</td>
+                </tr>
+                <tr>
+                  <td>Island Trading</td>
+                  <td>Helen Bennett</td>
+                  <td>UK</td>
+                </tr>
+                <tr>
+                  <td>Königlich Essen</td>
+                  <td>Philip Cramer</td>
+                  <td>Germany</td>
+                </tr>
+              </table>
+            </body>
+
+
+*/
+
+
+
+
+/* DISPLAY PROPERTY
+      Block-level Elements:
+        <div>
+        <h1> - <h6>
+        <p>
+        <form>
+        <header>
+        <footer>
+        <section>
+      Inline Elements:
+        <span>
+        <a>
+        <img>
+
+      - the display property overrides display value,
+          from inline element to a block element, or vice versa
+          (samples):
+
+              li {
+                  display: inline;
+                }
+          (the li or list element is block by default, but this time it
+              is overriden to make it inline)
+
+
+              span {
+                    display: block;
+                  }
+            (the span element is inline by default, but this time it
+                      is overriden to make it block)
+
+
+              a {
+                display: block;
+                }
+            (the a element is inline by default, but this time it
+                          is overriden to make it block)
+
+          - Hiding an element can be done by setting the display property to none.
+            Element will not take space.
+                  h1.hidden {
+                          display: none;
+                          }
+
+          - visibility:hidden; also hides an element, but still takes up space.
+                h1.hidden {
+                          visibility: hidden;
+                          }
+
+*/
+
+
+
+/* WIDTH vs MAX-WIDTH
+      - width: when the browser window is smaller than the width of the element,
+            the browser then adds a horizontal scrollbar to the page.
+      - max-width: width of element adjusts to browser window
+
+        (sample):
+          <head>
+            <style>
+              div.ex1 {
+                      width: 500px;
+                      margin: auto;
+                      border: 3px solid #73AD21;
+                      }
+
+              div.ex2 {
+                      max-width: 500px;
+                      margin: auto;
+                      border: 3px solid #73AD21;
+                      }
+            </style>
+          </head>
+          <body>
+            <h2>CSS Max-width</h2>
+            <div class="ex1">This div element has width: 500px;</div>
+            <br>
+            <div class="ex2">This div element has max-width: 500px;</div>
+            <p><strong>Tip:</strong> Drag the browser window to smaller than 500px wide, to see the difference between
+            the two divs!</p>
+          </body>
