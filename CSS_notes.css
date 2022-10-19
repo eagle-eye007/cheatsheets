@@ -383,10 +383,14 @@ ID selectors > Class selectors > Type selectors
 /* BOX MODEL:
     Explanation of the different parts:
       CONTENT - The content of the box, where text and images appear
-      PADDING - Clears an area around the content. The padding is transparent
-      BORDER - A border that goes around the padding and content
-      MARGIN - Clears an area outside the border. The margin is transparent
+      PADDING - Clears an area around the content. The padding is transparent. 
+          Increases the space between the edge of a box and the content inside of it.
+      BORDER - A border that goes around the padding and content. 
+        Adds space (even if it’s only a pixel or two) between the margin and the padding.
+      MARGIN - Clears an area outside the border. The margin is transparent.
+          Increases the space between a box and any others that sit next to it.
     (see https://drive.google.com/file/d/1kG_aaEVDHiE2b3N517o_37ZtihaWKcw4/view?usp=sharing)
+    (also see https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model/box-model.png)
       (sample):
         div {
             width: 300px;
